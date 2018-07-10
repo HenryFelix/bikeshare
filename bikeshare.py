@@ -59,52 +59,16 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    print("Press Ctrl + c if you want to exit at any moment !!!!")
+    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    city = input("Enter city_name(chicago, new york city, washington): ").lower()
+    # TO DO: get user input for month (all, january, february, ... , june)
+    month = input("enter Month(all, january, february, ... , june): ").lower()
 
-    city_found, month_found, day_found = False, False, False
+    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+    day = input("enter day of week (all, monday, tuesday, ... sunday): ").lower()
 
-    while True:
-
-        # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-        if not city_found:
-            city = input("We have 3 cities available to explore : Chicago, Washington, New York City. Please choose "
-                         "one : ")
-            city = city.lower()
-            if city not in CITY_DATA:
-                print("Invalid city or data not available, please choose one of the 3 : Chicago, Washington, "
-                      "New York City")
-                continue
-            else:
-                city_found = True
-
-        print('\n')
-
-        # get user input for month (all, january, february, ... , june)
-        if not month_found:
-            month = input("Enter month you want to explore. Choose one of : "
-                          "JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, ALL. ALL denotes data for all months : ")
-            month = month.upper()
-            if month not in MONTHS_TO_INDEX:
-                print("Invalid month entered!!! Enter a valid month!!!!")
-                continue
-            else:
-                month_found = True
-
-        print('\n')
-
-        # get user input for day of week (all, monday, tuesday, ... sunday)
-        day = input("Enter day you want to explore. Choose one of : MON, TUE, WED, THU, FRI, SAT, SUN, ALL. ALL denotes data for all days :")
-        day = day.upper()
-        if day not in DAY_T0_INDEX:
-            print("Invalid day entered!!! Enter a valid day!!!!")
-            continue
-        else:
-            break
-
-    print('-' * 40)
-    print('\n')
+    print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
